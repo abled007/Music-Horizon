@@ -1,7 +1,6 @@
 # Music-Horizon
 
 ## User Stories:
-- As a user I want to play any song I want.
 - As a user I want to be able to create my own playlist.
 - As a user I want to browse different genres of music
 - As a user I want to like songs and playlists
