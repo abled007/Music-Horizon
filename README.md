@@ -31,4 +31,3 @@
 - As a user I want to see the current song I'm playng 
 - As a user I want a profile page
 - As a user I want to edit my profile
-- As a user I want to 
