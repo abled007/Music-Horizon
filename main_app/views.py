@@ -15,7 +15,7 @@ class Song:
         self.audio_link = audio_link
 
 songs = [
-    Song('Kitchen', 'Kid Cudi', 'https://www.youtube.com/watch?v=DqFwWq-JxWk&list=RDDqFwWq-JxWk&start_radio=1'),
+    Song('Kitchen', 'Kid Cudi', 'https://open.spotify.com/embed/track/7FOJvA3PxiIU0DN3JjQ7jT?si=fb0ae669971a42e0'),
 ]
 
 class SongList(TemplateView):
@@ -27,5 +27,5 @@ class SongList(TemplateView):
         if title != None:
             context['songs'] = Song.objects.filter(title__icontains=title)
         else:
-            context['songs'] = Song.objects.all()
+            context['songs'] = songs
         return context
