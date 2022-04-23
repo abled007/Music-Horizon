@@ -19,13 +19,13 @@ songs = [
 ]
 
 class SongList(TemplateView):
-       template_name = 'songlist.html'
+    template_name = 'songlist.html'
 
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    title = self.request.Get.get('title')
-    if title != None:
-        context['songs'] = Song.objects.filter(title__icontains=title)
-    else:
-        context['songs'] = Song.objects.all()
-    return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = self.request.GET.get('title')
+        if title != None:
+            context['songs'] = Song.objects.filter(title__icontains=title)
+        else:
+            context['songs'] = Song.objects.all()
+        return context
