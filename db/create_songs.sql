@@ -1,0 +1,2 @@
+INSERT INTO main_app_songs(title, artist, img, audio_link)
+VALUES ('Kitchen', 'Kid Cudi', 'https://i1.sndcdn.com/artworks-000581707001-d81nqn-t500x500.jpg', 'https://www.youtube.com/watch?v=DqFwWq-JxWk&list=RDDqFwWq-JxWk&start_radio=1')

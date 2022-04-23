@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Songs</h1>
+<form>
+    <div>
+        <input type="text" name="name" placeholder="name"/>
+        <input type="submit" value="Search"/>
+    </div>
+    <a href="{% url 'song-list' %}">Clear Search</a>
+</form>
+{% for song in songs %}
+<iframe style="border-radius:12px" src="{{song.audio_link}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<h3>{{song.title}}</h3>
+<h3> {{song.artist}}</h3>
+
+{% endfor %}
+<div>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6AGON2BGdPmPMJGiiNuuwl?si=dcd5157b1a804b98" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</div>
+
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Jcij1eWd5bDMU5iPbxe2i?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+{% endblock %}
