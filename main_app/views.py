@@ -8,15 +8,15 @@ from .models import Song
 class Home(TemplateView):
     template_name = 'home.html'
 
-class Song:
-    def __init__(self, title, artist, audio_link):
-        self.title = title
-        self.artist = artist
-        self.audio_link = audio_link
+# class Song:
+#     def __init__(self, title, artist, audio_link):
+#         self.title = title
+#         self.artist = artist
+#         self.audio_link = audio_link
 
-songs = [
-    Song('Kitchen', 'Kid Cudi', 'https://open.spotify.com/embed/track/7FOJvA3PxiIU0DN3JjQ7jT?si=fb0ae669971a42e0'),
-]
+# songs = [
+#     Song('Power Trip', 'J. Cole', 'https://open.spotify.com/embed/track/7FOJvA3PxiIU0DN3JjQ7jT?si=fb0ae669971a42e0'),
+# ]
 
 class SongList(TemplateView):
     template_name = 'songlist.html'
@@ -27,5 +27,5 @@ class SongList(TemplateView):
         if title != None:
             context['songs'] = Song.objects.filter(title__icontains=title)
         else:
-            context['songs'] = songs
+            context['songs'] = Song.objects.all()
         return context
