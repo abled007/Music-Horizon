@@ -21,6 +21,9 @@ class SongList(TemplateView):
             context['songs'] = Song.objects.all()
         return context
 
+class Playlist(TemplateView):
+    template_name = 'playlists.html'
+
 class Playlist_Create(CreateView):
     model = Playlist
     fields = ['title', 'songs']
