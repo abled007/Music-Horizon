@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ username }}'s collection:</h1>
+
+{% for playlist in playlists %}
+<a href="/playlists/{{ playlist.id }}">
+  <h3>{{ playlist.title }}</h3>
+</a>
+
+{% endfor %}
+
+{% endblock %}

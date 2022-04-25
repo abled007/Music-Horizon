@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views import View
+from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from .models import Song, Playlist
 from django.views.generic.edit import CreateView
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -24,9 +26,19 @@ class SongList(TemplateView):
 class Playlist(TemplateView):
     template_name = 'playlists.html'
 
-class Playlist_Create(CreateView):
-    model = Playlist
-    fields = ['title', 'songs']
-    template_name = 'playlist_create.html'
-    success_url = '/songs/'
+# class Playlist_Create(CreateView):
+#     model = Playlist
+#     fields = '__all__'
+#     template_name = 'playlist_create.html'
+#     success_url = '/playlists/'
 
+#     def form_valid(self, form):
+#         self.object = form.save(commit=False)
+#         self.object.user = self.request.user
+#         self.object.save()
+#         return HttpResponseRedirect('/playlists')
+        
+# def profile(request, username):
+#     user = User.objects.get(username=username)
+#     playlists = Playlist.objects.filter(user=user)
+#     return render(request, 'profile.html', {'username': username, 'playlists': playlists})
