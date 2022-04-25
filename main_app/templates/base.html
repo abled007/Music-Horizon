@@ -6,17 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;555&display=swap" rel="stylesheet">
     <script src="{% static 'scripts/app.js' %}" defer></script>
     <title>Music Horizon</title>
 </head>
 <body>
     <nav>
+        <a href="/">Home</a>
         <a href="/songs">Songs</a>
         <a href="/admin">admin</a>
         <a href="/playlists">playlist</a>
-        <!-- <a href="/profile">profile</a> -->
         <a href="/playlists/new">create playlist</a>
-        <!-- <a href="/user/{{user.username}}">user</a> -->
+        <a href="/user/{{user.username}}">user</a>
     </nav>
     {% block content %}
 

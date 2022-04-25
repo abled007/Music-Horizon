@@ -23,8 +23,19 @@ class Playlist_Create(CreateView):
         self.object.save()
         return HttpResponseRedirect('/playlists')
 
-class Playlist(TemplateView):
+class Playlist_View(TemplateView):
     template_name = 'playlists.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['playlists'] = Playlist.objects.all()
+        return context
+
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+    playlists = Playlist.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'playlists': playlists})
 
 class SongList(TemplateView):
     template_name = 'songlist.html'
@@ -38,7 +49,4 @@ class SongList(TemplateView):
             context['songs'] = Song.objects.all()
         return context
         
-# def profile(request, username):
-#     user = User.objects.get(username=username)
-#     playlists = Playlist.objects.filter(user=user)
-#     return render(request, 'profile.html', {'username': username, 'playlists': playlists})
+
