@@ -11,6 +11,21 @@ from django.contrib.auth.models import User
 class Home(TemplateView):
     template_name = 'home.html'
 
+class Playlist_Create(CreateView):
+    model = Playlist
+    fields = '__all__'
+    template_name = 'playlist_create.html'
+    success_url = 'playlists/'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/playlists')
+
+class Playlist(TemplateView):
+    template_name = 'playlists.html'
+
 class SongList(TemplateView):
     template_name = 'songlist.html'
 
@@ -22,21 +37,6 @@ class SongList(TemplateView):
         else:
             context['songs'] = Song.objects.all()
         return context
-
-class Playlist(TemplateView):
-    template_name = 'playlists.html'
-
-# class Playlist_Create(CreateView):
-#     model = Playlist
-#     fields = '__all__'
-#     template_name = 'playlist_create.html'
-#     success_url = '/playlists/'
-
-#     def form_valid(self, form):
-#         self.object = form.save(commit=False)
-#         self.object.user = self.request.user
-#         self.object.save()
-#         return HttpResponseRedirect('/playlists')
         
 # def profile(request, username):
 #     user = User.objects.get(username=username)
