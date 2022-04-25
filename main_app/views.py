@@ -1,22 +1,15 @@
 from django.shortcuts import render
 from django.views import View
+from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from .models import Song
+from .models import Song, Playlist
+from django.views.generic.edit import CreateView
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 class Home(TemplateView):
     template_name = 'home.html'
-
-# class Song:
-#     def __init__(self, title, artist, audio_link):
-#         self.title = title
-#         self.artist = artist
-#         self.audio_link = audio_link
-
-# songs = [
-#     Song('Power Trip', 'J. Cole', 'https://open.spotify.com/embed/track/7FOJvA3PxiIU0DN3JjQ7jT?si=fb0ae669971a42e0'),
-# ]
 
 class SongList(TemplateView):
     template_name = 'songlist.html'
@@ -29,3 +22,23 @@ class SongList(TemplateView):
         else:
             context['songs'] = Song.objects.all()
         return context
+
+class Playlist(TemplateView):
+    template_name = 'playlists.html'
+
+# class Playlist_Create(CreateView):
+#     model = Playlist
+#     fields = '__all__'
+#     template_name = 'playlist_create.html'
+#     success_url = '/playlists/'
+
+#     def form_valid(self, form):
+#         self.object = form.save(commit=False)
+#         self.object.user = self.request.user
+#         self.object.save()
+#         return HttpResponseRedirect('/playlists')
+        
+# def profile(request, username):
+#     user = User.objects.get(username=username)
+#     playlists = Playlist.objects.filter(user=user)
+#     return render(request, 'profile.html', {'username': username, 'playlists': playlists})
