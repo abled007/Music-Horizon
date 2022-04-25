@@ -6,18 +6,24 @@
         <input type="text" name="name" placeholder="name"/>
         <input type="submit" value="Search"/>
     </div>
-    <a href="{% url 'playlists' %}">Clear Search</a>
-    
+    <a href="{% url 'playlists' %}">Clear Search</a>    
 </form>
+<h1>{{user.username}}</h1>
 {% for playlist in playlists %}
 
-<iframe style="border-radius:12px" src="{% url 'playlists' %}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <a href="{% url 'playlists' playlist.pk}"></a>
+    <h3>title: {{playlists.title}}</h3>
 
-<p>Created By: 
-    <a href='/user/{{playlist.user.username}}'>{{playlist.user.username}}</a>
-</p>
+    {% for song in playlist.songs.all %}
+        <h1>{{forloop.counter}}</h1>
+
+        <iframe style="border-radius:12px" src="{{song.audio_link}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+        <p>Created By: 
+            <a href='/user/{{playlist.user.username}}'>{{playlist.user.username}}</a>
+        </p>
+    {% endfor %}
 {% endfor %}
-
 {% endblock %}
 
 
