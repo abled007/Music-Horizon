@@ -3,7 +3,7 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from .models import Song, Playlist
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
 
@@ -26,6 +26,13 @@ class Playlist_Create(CreateView):
 class Playlist_Detail(DetailView):
     model = Playlist
     template_name = 'playlist_detail.html'
+
+class Playlist_Update(UpdateView):
+    model = Playlist
+    fields = '__all__'
+    template_name = 'playlist_update.html'
+    success_url = '/playlists'
+
 
 
 class Playlist_View(TemplateView):

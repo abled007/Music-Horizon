@@ -3,9 +3,11 @@
 {% block content %}
 
     <h1>{{playlist.title}}</h1>
+    <h1>{{playlist.songs}}</h1>
+    
 
 <div>
-    <a href=""></a>
+    <a href="{% url 'playlist-update' playlist.pk %}">Update</a>
     <a href=""></a>
 </div>
 
