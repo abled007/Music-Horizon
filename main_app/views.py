@@ -6,6 +6,7 @@ from .models import Song, Playlist
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
+from django.urls import reverse
 
 # Create your views here.
 class Home(TemplateView):
@@ -15,7 +16,9 @@ class Playlist_Create(CreateView):
     model = Playlist
     fields = '__all__'
     template_name = 'playlist_create.html'
-    success_url = 'playlists/'
+    # success_url = 'playlists/'
+    def get_success_url(self):
+        return reverse('playlist-detail', kwargs={'pk': self.object.pk})
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -31,7 +34,9 @@ class Playlist_Update(UpdateView):
     model = Playlist
     fields = '__all__'
     template_name = 'playlist_update.html'
-    success_url = '/playlists'
+    # success_url = '/playlists'
+    def get_success_url(self):
+        return reverse('playlist-detail', kwargs={'pk': self.object.pk})
 
 
 
