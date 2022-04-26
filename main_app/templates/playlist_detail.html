@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{playlist.title}}</h1>
+    <h1>{{playlist.songs}}</h1>
+    
+
+<div>
+    <a href="{% url 'playlist-update' playlist.pk %}">Update</a>
+    <a href="{% url 'playlist-delete' playlist.pk %}">Delete</a>
+</div>
+
+{% endblock %}
