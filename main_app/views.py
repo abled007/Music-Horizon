@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 from .models import Song, Playlist
 from django.views.generic.edit import CreateView
 from django.contrib.auth.models import User
-
+from django.views.generic import DetailView
 
 # Create your views here.
 class Home(TemplateView):
@@ -22,6 +22,11 @@ class Playlist_Create(CreateView):
         self.object.user = self.request.user
         self.object.save()
         return HttpResponseRedirect('/playlists')
+
+class Playlist_Detail(DetailView):
+    model = Playlist
+    template_name = 'playlist_detail.html'
+
 
 class Playlist_View(TemplateView):
     template_name = 'playlists.html'
