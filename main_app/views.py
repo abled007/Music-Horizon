@@ -3,7 +3,7 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from .models import Song, Playlist
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -38,6 +38,10 @@ class Playlist_Update(UpdateView):
     def get_success_url(self):
         return reverse('playlist-detail', kwargs={'pk': self.object.pk})
 
+class Playlist_Delete(DeleteView):
+    model = Playlist
+    template_name = 'playlist_delete_confirm.html'
+    success_url = '/playlists/'
 
 
 class Playlist_View(TemplateView):

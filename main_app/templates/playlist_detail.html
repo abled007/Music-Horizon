@@ -8,7 +8,7 @@
 
 <div>
     <a href="{% url 'playlist-update' playlist.pk %}">Update</a>
-    <a href=""></a>
+    <a href="{% url 'playlist-delete' playlist.pk %}">Delete</a>
 </div>
 
 {% endblock %}
