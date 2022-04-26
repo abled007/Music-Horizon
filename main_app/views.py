@@ -9,11 +9,14 @@ from django.views.generic import DetailView
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 class Home(TemplateView):
     template_name = 'home.html'
 
+@method_decorator(login_required, name='dispatch')
 class Playlist_Create(CreateView):
     model = Playlist
     fields = '__all__'
@@ -32,6 +35,7 @@ class Playlist_Detail(DetailView):
     model = Playlist
     template_name = 'playlist_detail.html'
 
+@method_decorator(login_required, name='dispatch')
 class Playlist_Update(UpdateView):
     model = Playlist
     fields = '__all__'
@@ -40,6 +44,7 @@ class Playlist_Update(UpdateView):
     def get_success_url(self):
         return reverse('playlist-detail', kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class Playlist_Delete(DeleteView):
     model = Playlist
     template_name = 'playlist_delete_confirm.html'
@@ -54,7 +59,7 @@ class Playlist_View(TemplateView):
         context['playlists'] = Playlist.objects.all()
         return context
 
-
+@login_required
 def profile(request, username):
     user = User.objects.get(username=username)
     playlists = Playlist.objects.filter(user=user)
@@ -71,9 +76,6 @@ class SongList(TemplateView):
         else:
             context['songs'] = Song.objects.all()
         return context
-        
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 def signup_view(request):
     if request.method == 'POST':
