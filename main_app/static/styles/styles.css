@@ -28,16 +28,11 @@ body {
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    padding-top: 20px;
 }
 
 .left {
     float: left;
     left: 0;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 10px 0;
 }
 
 .right {
@@ -51,6 +46,11 @@ center {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px 0; 
 }
 
 a:hover {

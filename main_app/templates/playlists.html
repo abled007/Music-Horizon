@@ -4,8 +4,9 @@
 
 {% for playlist in playlists %}
 
-    <a href="{% url 'playlists' playlist.pk}"></a>
-    <h3>{{playlist.title}}</h3>
+<a href="/playlists/{{ playlist.id }}">
+    <h3>{{ playlist.title }}</h3>
+  </a>
 
     {% for song in playlist.songs.all %}
 

@@ -28,7 +28,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production! False for production, True for development
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
