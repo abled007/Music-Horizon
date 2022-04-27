@@ -2,8 +2,13 @@ h1 {
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
-body {
 
+.home {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
     background-repeat: no-repeat;
     background: rgb(0,0,0);
     background: linear-gradient(354deg, rgba(0,0,0,1) 51%, rgba(66,2,66,1) 71%, rgba(0,0,0,1) 82%, rgba(31,14,40,1) 100%);

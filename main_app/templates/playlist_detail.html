@@ -3,8 +3,12 @@
 {% block content %}
 
     <h1>{{playlist.title}}</h1>
-    <h1>{{playlist.songs}}</h1>
     
+    {% for song in playlist.songs.all %}
+
+    <iframe style="border-radius:12px" src="{{song.audio_link}}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+{% endfor %}
 
 <div>
     <a href="{% url 'playlist-update' playlist.pk %}">Update</a>
